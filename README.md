@@ -7,7 +7,7 @@ Esse repositório e uma demostração de um sistema de cadastro de imoveis utili
 
 1. execute os comandos:
 ```
-$ cd cd spring-rest-repository/ 
+$ cd spring-rest-repository
 $ mvn spring-boot:run  
 ``` 
 
