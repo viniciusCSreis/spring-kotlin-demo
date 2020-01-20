@@ -8,6 +8,7 @@ Esse repositório e uma demostração de um sistema de cadastro de imoveis utili
 1. execute os comandos:
 ```
 $ cd spring-rest-repository
+$ docker-compose up -d
 $ mvn spring-boot:run  
 ``` 
 
