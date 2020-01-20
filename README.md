@@ -11,5 +11,5 @@ $ cd spring-rest-repository
 $ mvn spring-boot:run  
 ``` 
 
-2. abra o postman e importe a o arquivo **rest_repository.postman_collection.json** disponível na pasta collections.
+2. abra o postman e importe o arquivo **rest_repository.postman_collection.json** disponível na pasta collections.
 
