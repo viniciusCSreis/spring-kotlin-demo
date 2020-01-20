@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "3e65b7f0-2aba-452a-8725-8b5da311a196",
+		"name": "rest_repository",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Imoveis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/imoveis?page=0&size=1&sort=tipoImovel,asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"imoveis"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "1"
+						},
+						{
+							"key": "sort",
+							"value": "tipoImovel,asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Imoveis",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15dfeafe-151d-4e35-adfc-adb9ef9c8108",
+						"exec": [
+							"// {",
+							"// \t\"cep\":\"38410-780\",",
+							"// \t\"endereco\":\"R Brasil\",",
+							"// \t\"numero\":\"42\",",
+							"// \t\"tipoImovel\":\"APARTAMENTO\",",
+							"// \t\"andar\":\"3\"",
+							"// }",
+							"",
+							"",
+							"// {",
+							"// \t\"cep\":\"38410-780\",",
+							"// \t\"endereco\":\"R Brasil\",",
+							"// \t\"numero\":\"42\",",
+							"// \t\"tipoImovel\":\"CASA\"",
+							"// }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cep\":\"38410-780\",\n\t\"endereco\":\"R Brasil\",\n\t\"numero\":\"42\",\n\t\"tipoImovel\":\"CASA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/imoveis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"imoveis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Imoveis",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15dfeafe-151d-4e35-adfc-adb9ef9c8108",
+						"exec": [
+							"// {",
+							"// \t\"cep\":\"38410-780\",",
+							"// \t\"endereco\":\"R Brasil\",",
+							"// \t\"numero\":\"42\",",
+							"// \t\"tipoImovel\":\"APARTAMENTO\",",
+							"// \t\"andar\":\"3\"",
+							"// }",
+							"",
+							"",
+							"// {",
+							"// \t\"cep\":\"38410-780\",",
+							"// \t\"endereco\":\"R Brasil\",",
+							"// \t\"numero\":\"42\",",
+							"// \t\"tipoImovel\":\"CASA\"",
+							"// }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"cep\": \"38410-780\",\n  \"endereco\": \"R Brasil\",\n  \"numero\": 42,\n  \"tipoImovel\": \"APARTAMENTO\",\n  \"andar\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/imoveis/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"imoveis",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "699e603e-2129-4cce-8152-9fa2f02d9c70"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Imoveis",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15dfeafe-151d-4e35-adfc-adb9ef9c8108",
+						"exec": [
+							"// {",
+							"// \t\"cep\":\"38410-780\",",
+							"// \t\"endereco\":\"R Brasil\",",
+							"// \t\"numero\":\"42\",",
+							"// \t\"tipoImovel\":\"APARTAMENTO\",",
+							"// \t\"andar\":\"3\"",
+							"// }",
+							"",
+							"",
+							"// {",
+							"// \t\"cep\":\"38410-780\",",
+							"// \t\"endereco\":\"R Brasil\",",
+							"// \t\"numero\":\"42\",",
+							"// \t\"tipoImovel\":\"CASA\"",
+							"// }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/imoveis/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"imoveis",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "699e603e-2129-4cce-8152-9fa2f02d9c70"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
