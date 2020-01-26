@@ -3,6 +3,7 @@ package com.example.demo2.service
 import com.example.demo2.controller.request.ImovelRequest
 import com.example.demo2.controller.response.ImovelResponse
 import com.example.demo2.controller.response.PageResponse
+import com.example.demo2.entity.Imovel
 import com.example.demo2.repository.ImovelRepository
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
@@ -38,5 +39,16 @@ class ImovelServiceImpl(
         if (imovelRepository.existsById(id)) {
             imovelRepository.deleteById(id)
         }
+    }
+
+    private fun Imovel.toResponse(): ImovelResponse {
+        return ImovelResponse(
+            id = this.id!!,
+            tipoImovel = this.tipoImovel!!,
+            numero = this.numero!!,
+            endereco = this.endereco!!,
+            andar = this.andar,
+            cep = this.cep!!
+        )
     }
 }

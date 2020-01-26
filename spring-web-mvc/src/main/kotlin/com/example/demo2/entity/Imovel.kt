@@ -32,15 +32,4 @@ data class Imovel(
     var tipoImovel: TipoImovel? = null,
 
     var andar: Long? = null
-) {
-    fun toResponse(): ImovelResponse {
-        return ImovelResponse(
-            id=this.id!!,
-            tipoImovel = this.tipoImovel!!,
-            numero = this.numero!!,
-            endereco = this.endereco!!,
-            andar = this.andar,
-            cep = this.cep!!
-        )
-    }
-}
+)
