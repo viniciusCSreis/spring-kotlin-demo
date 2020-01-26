@@ -149,10 +149,24 @@ internal class ImovelServiceImplTest {
         val id = "1"
         val argumentCaptorOfImovelId = argumentCaptor<String>()
 
+        whenever(imovelRepository.existsById(id)).thenReturn(true)
+
         imovelService.delete(id)
 
         verify(imovelRepository).deleteById(argumentCaptorOfImovelId.capture())
         assertEquals(id, argumentCaptorOfImovelId.firstValue)
+    }
+
+    @Test
+    fun `delete when not exist`() {
+        val id = "1"
+
+        whenever(imovelRepository.existsById(id)).thenReturn(false)
+
+        imovelService.delete(id)
+
+        verify(imovelRepository, times(0)).deleteById(id)
+        verify(imovelRepository, times(1)).existsById(id)
     }
 
     private fun buildImovelMock(): Imovel {

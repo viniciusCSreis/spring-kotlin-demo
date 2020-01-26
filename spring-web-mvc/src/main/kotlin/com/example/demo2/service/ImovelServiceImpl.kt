@@ -35,6 +35,8 @@ class ImovelServiceImpl(
     }
 
     override fun delete(id: String) {
-        imovelRepository.deleteById(id)
+        if (imovelRepository.existsById(id)) {
+            imovelRepository.deleteById(id)
+        }
     }
 }
