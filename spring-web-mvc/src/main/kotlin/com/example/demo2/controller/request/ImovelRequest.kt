@@ -26,7 +26,6 @@ data class ImovelRequest(
 ) {
     fun toEntity(): Imovel {
         return Imovel(
-            id = UUID.randomUUID().toString(),
             cep = this.cep,
             andar = this.andar,
             endereco = this.endereco,
@@ -35,11 +34,10 @@ data class ImovelRequest(
         )
     }
 
-    fun valid() : ImovelRequest{
-        if(this.tipoImovel == TipoImovel.APARTAMENTO && this.andar == null)
-        {
+    fun valid(): ImovelRequest {
+        if (this.tipoImovel == TipoImovel.APARTAMENTO && this.andar == null) {
             throw ResponseStatusException(
-                HttpStatus.BAD_REQUEST,"Imoveis do tipo apartamento devem informar o andar."
+                HttpStatus.BAD_REQUEST, "Imoveis do tipo apartamento devem informar o andar."
             )
         }
         return this
