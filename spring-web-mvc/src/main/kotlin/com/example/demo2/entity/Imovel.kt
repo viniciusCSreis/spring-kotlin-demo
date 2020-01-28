@@ -1,6 +1,5 @@
 package com.example.demo2.entity
 
-import com.example.demo2.controller.response.ImovelResponse
 import com.example.demo2.enums.TipoImovel
 import org.hibernate.annotations.GenericGenerator
 import javax.persistence.Entity
@@ -14,22 +13,20 @@ import javax.validation.constraints.NotNull
 @Entity
 data class Imovel(
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-    var id: String? = null,
+    val id: String,
 
     @field:NotNull
-    var cep: String? = null,
+    val cep: String,
 
     @field:NotBlank
-    var endereco: String? = null,
+    val endereco: String,
 
     @field:NotNull
-    var numero: Long? = null,
+    val numero: Long,
 
     @Enumerated(EnumType.STRING)
     @field:NotNull
-    var tipoImovel: TipoImovel? = null,
+    val tipoImovel: TipoImovel,
 
-    var andar: Long? = null
+    val andar: Long?
 )

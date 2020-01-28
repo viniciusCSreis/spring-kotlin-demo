@@ -10,7 +10,9 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
@@ -39,7 +41,7 @@ internal class ImovelServiceImplTest {
 
         verify(imovelRepository).save(argumentCaptorOfImovelRequest.capture())
 
-        assertNull(argumentCaptorOfImovelRequest.firstValue.id)
+        assertNotNull(imovelMock.id, argumentCaptorOfImovelRequest.firstValue.id)
         assertEquals(imovelRequest.cep, argumentCaptorOfImovelRequest.firstValue.cep)
         assertEquals(imovelRequest.andar, argumentCaptorOfImovelRequest.firstValue.andar)
         assertEquals(imovelRequest.endereco, argumentCaptorOfImovelRequest.firstValue.endereco)
@@ -56,28 +58,28 @@ internal class ImovelServiceImplTest {
 
     @Test
     fun `criar apartamento sem passar numero deve estourar erro`() {
-        val imovelRequest = buildImovelRequestMock().copy(andar = null,tipoImovel = TipoImovel.APARTAMENTO)
+        val imovelRequest = buildImovelRequestMock().copy(andar = null, tipoImovel = TipoImovel.APARTAMENTO)
         val exception = assertThrows(ResponseStatusException::class.java) { imovelService.create(imovelRequest) }
-        assertEquals(HttpStatus.BAD_REQUEST,exception.status)
+        assertEquals(HttpStatus.BAD_REQUEST, exception.status)
     }
 
     @Test
     fun `edit apartamento sem passar numero deve estourar erro`() {
-        val imovelRequest = buildImovelRequestMock().copy(andar = null,tipoImovel = TipoImovel.APARTAMENTO)
+        val imovelRequest = buildImovelRequestMock().copy(andar = null, tipoImovel = TipoImovel.APARTAMENTO)
 
         val imovelMock = buildImovelMock()
         whenever(imovelRepository.findById(any())).thenReturn(Optional.of(imovelMock))
 
-        val exception = assertThrows(ResponseStatusException::class.java) { imovelService.edit(imovelRequest,"1") }
-        assertEquals(HttpStatus.BAD_REQUEST,exception.status)
+        val exception = assertThrows(ResponseStatusException::class.java) { imovelService.edit(imovelRequest, "1") }
+        assertEquals(HttpStatus.BAD_REQUEST, exception.status)
     }
 
     @Test
     fun `edit apartamento que nao existe deve estourar erro`() {
-        val imovelRequest = buildImovelRequestMock().copy(andar = null,tipoImovel = TipoImovel.APARTAMENTO)
+        val imovelRequest = buildImovelRequestMock().copy(andar = null, tipoImovel = TipoImovel.APARTAMENTO)
 
-        val exception = assertThrows(ResponseStatusException::class.java) { imovelService.edit(imovelRequest,"1") }
-        assertEquals(HttpStatus.NOT_FOUND,exception.status)
+        val exception = assertThrows(ResponseStatusException::class.java) { imovelService.edit(imovelRequest, "1") }
+        assertEquals(HttpStatus.NOT_FOUND, exception.status)
     }
 
     @Test
@@ -93,7 +95,7 @@ internal class ImovelServiceImplTest {
         whenever(imovelRepository.findById(any())).thenReturn(Optional.of(imovelMock))
         whenever(imovelRepository.save(any<Imovel>())).thenReturn(imovelMock.copy(numero = 106))
 
-        val response = imovelService.edit(imovelRequest, imovelMock.id!!)
+        val response = imovelService.edit(imovelRequest, imovelMock.id)
 
         verify(imovelRepository).findById(argumentCaptorOfImovelId.capture())
         verify(imovelRepository).save(argumentCaptorOfImovelRequest.capture())

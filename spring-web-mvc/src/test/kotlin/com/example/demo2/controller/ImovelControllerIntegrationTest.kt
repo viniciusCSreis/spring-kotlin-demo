@@ -171,6 +171,7 @@ internal class ImovelControllerIntegrationTest : BaseControllerTest() {
     )
 
     private fun buildImovelEntity(): Imovel = Imovel(
+        id = UUID.randomUUID().toString(),
         cep = "12341564789",
         andar = null,
         endereco = "rua jose",

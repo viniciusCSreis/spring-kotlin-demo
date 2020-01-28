@@ -43,12 +43,12 @@ class ImovelServiceImpl(
 
     private fun Imovel.toResponse(): ImovelResponse {
         return ImovelResponse(
-            id = this.id!!,
-            tipoImovel = this.tipoImovel!!,
-            numero = this.numero!!,
-            endereco = this.endereco!!,
+            id = this.id,
+            tipoImovel = this.tipoImovel,
+            numero = this.numero,
+            endereco = this.endereco,
             andar = this.andar,
-            cep = this.cep!!
+            cep = this.cep
         )
     }
 }

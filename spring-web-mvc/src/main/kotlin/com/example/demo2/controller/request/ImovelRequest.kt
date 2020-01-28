@@ -4,27 +4,29 @@ import com.example.demo2.entity.Imovel
 import com.example.demo2.enums.TipoImovel
 import org.springframework.http.HttpStatus
 import org.springframework.web.server.ResponseStatusException
+import java.util.UUID
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 data class ImovelRequest(
 
     @field:NotNull
-    val cep: String? = null,
+    val cep: String,
 
     @field:NotBlank
-    val endereco: String? = null,
+    val endereco: String,
 
     @field:NotNull
-    val numero: Long? = null,
+    val numero: Long,
 
     @field:NotNull
-    val tipoImovel: TipoImovel? = null,
+    val tipoImovel: TipoImovel,
 
-    val andar: Long? = null
+    val andar: Long?
 ) {
     fun toEntity(): Imovel {
         return Imovel(
+            id = UUID.randomUUID().toString(),
             cep = this.cep,
             andar = this.andar,
             endereco = this.endereco,
